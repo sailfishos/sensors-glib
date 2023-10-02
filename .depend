@@ -1,0 +1,110 @@
+sfwlogging.o:\
+	sfwlogging.c\
+	sfwlogging.h\
+	sfwtypes.h\
+
+sfwlogging.pic.o:\
+	sfwlogging.c\
+	sfwlogging.h\
+	sfwtypes.h\
+
+sfwplugin.o:\
+	sfwplugin.c\
+	sfwdbus.h\
+	sfwlogging.h\
+	sfwplugin.h\
+	sfwservice.h\
+	sfwtypes.h\
+	utility.h\
+
+sfwplugin.pic.o:\
+	sfwplugin.c\
+	sfwdbus.h\
+	sfwlogging.h\
+	sfwplugin.h\
+	sfwservice.h\
+	sfwtypes.h\
+	utility.h\
+
+sfwreporting.o:\
+	sfwreporting.c\
+	sfwdbus.h\
+	sfwlogging.h\
+	sfwreporting.h\
+	sfwsensor.h\
+	sfwservice.h\
+	sfwtypes.h\
+	utility.h\
+
+sfwreporting.pic.o:\
+	sfwreporting.c\
+	sfwdbus.h\
+	sfwlogging.h\
+	sfwreporting.h\
+	sfwsensor.h\
+	sfwservice.h\
+	sfwtypes.h\
+	utility.h\
+
+sfwsensor.o:\
+	sfwsensor.c\
+	sfwdbus.h\
+	sfwlogging.h\
+	sfwplugin.h\
+	sfwreporting.h\
+	sfwsensor.h\
+	sfwservice.h\
+	sfwtypes.h\
+	utility.h\
+
+sfwsensor.pic.o:\
+	sfwsensor.c\
+	sfwdbus.h\
+	sfwlogging.h\
+	sfwplugin.h\
+	sfwreporting.h\
+	sfwsensor.h\
+	sfwservice.h\
+	sfwtypes.h\
+	utility.h\
+
+sfwservice.o:\
+	sfwservice.c\
+	sfwdbus.h\
+	sfwlogging.h\
+	sfwservice.h\
+	sfwtypes.h\
+	utility.h\
+
+sfwservice.pic.o:\
+	sfwservice.c\
+	sfwdbus.h\
+	sfwlogging.h\
+	sfwservice.h\
+	sfwtypes.h\
+	utility.h\
+
+sfwtypes.o:\
+	sfwtypes.c\
+	sfwdbus.h\
+	sfwlogging.h\
+	sfwtypes.h\
+
+sfwtypes.pic.o:\
+	sfwtypes.c\
+	sfwdbus.h\
+	sfwlogging.h\
+	sfwtypes.h\
+
+utility.o:\
+	utility.c\
+	sfwlogging.h\
+	sfwtypes.h\
+	utility.h\
+
+utility.pic.o:\
+	utility.c\
+	sfwlogging.h\
+	sfwtypes.h\
+	utility.h\
+
