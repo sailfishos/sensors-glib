@@ -1,5 +1,6 @@
 /******************************************************************************
  * Copyright (c) 2024 Jollyboys Ltd.
+ * Copyright (c) 2026 Jolla Mobile Ltd
  *
  * All rights reserved.
  *
@@ -110,6 +111,7 @@ const SfwSampleRotation      *sfwreading_rotation        (const SfwReading *self
 const SfwSampleStepcounter   *sfwreading_stepcounter     (const SfwReading *self);
 const SfwSampleTap           *sfwreading_tap             (const SfwReading *self);
 const SfwSampleTemperature   *sfwreading_temperature     (const SfwReading *self);
+const SfwSampleWakeup        *sfwreading_wakeup          (const SfwReading *self);
 
 /* ------------------------------------------------------------------------- *
  * SFWSAMPLE
@@ -129,6 +131,7 @@ const char *sfwsamplerotation_repr     (const SfwSampleRotation *self);
 const char *sfwsamplestepcounter_repr  (const SfwSampleStepcounter *self);
 const char *sfwsampletap_repr          (const SfwSampleTap *self);
 const char *sfwsampletemperature_repr  (const SfwSampleTemperature *self);
+const char *sfwsamplewakeup_repr       (const SfwSampleWakeup *self);
 
 /* ------------------------------------------------------------------------- *
  * SFWORIENTATIONSTATE
@@ -291,6 +294,16 @@ static const SfwSensorInfo typeinfo_lut[SFW_SENSOR_ID_COUNT] = {
         .sti_sample_size      = sizeof(SfwSampleTemperature),
         .sti_sample_repr_cb   = SAMPLE_REPR(sfwsampletemperature_repr),
         .sti_normalize_cb     = NULL, // if needed: reading_temperature_cb,
+    },
+
+    [SFW_SENSOR_ID_WAKEUP] = {
+        .sti_sensor_name      = SFWDBUS_SENSOR_NAME_WAKEUP,
+        .sti_sensor_object    = SFWDBUS_SENSOR_OBJECT_WAKEUP,
+        .sti_sensor_interface = SFWDBUS_SENSOR_INTERFACE_WAKEUP,
+        .sti_value_method     = SFWDBUS_SENSOR_METHOD_GET_WAKEUP,
+        .sti_sample_size      = sizeof(SfwSampleWakeup),
+        .sti_sample_repr_cb   = SAMPLE_REPR(sfwsamplewakeup_repr),
+        .sti_normalize_cb     = NULL, // if needed: reading_wakeup_cb,
     },
 };
 
@@ -597,6 +610,18 @@ sfwreading_temperature(const SfwReading *self)
     return temperature;
 }
 
+const SfwSampleWakeup *
+sfwreading_wakeup(const SfwReading *self)
+{
+    const SfwSampleWakeup *wakeup = NULL;
+    if( self->sensor_id != SFW_SENSOR_ID_WAKEUP )
+        sfwlog_warning("%s does not have wakeup data",
+                       sfwsensorid_name(self->sensor_id));
+    else
+        wakeup = &self->sample.wakeup;
+    return wakeup;
+}
+
 /* ========================================================================= *
  * SFWSAMPLE
  * ========================================================================= */
@@ -772,6 +797,17 @@ sfwsampletemperature_repr(const SfwSampleTemperature *self)
              "time=%"PRIu64" temperature=%"PRIu32,
              self->temperature_timestamp,
              self->temperature_value);
+    return buf;
+}
+
+const char *
+sfwsamplewakeup_repr(const SfwSampleWakeup *self)
+{
+    static char buf[80];
+    snprintf(buf, sizeof buf,
+             "time=%"PRIu64" wakeup=%"PRIu32,
+             self->wakeup_timestamp,
+             self->wakeup_value);
     return buf;
 }
 

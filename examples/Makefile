@@ -1,7 +1,7 @@
 TARGETS  += proximity
 TARGETS  += allsensors
 PACKAGES += sensors-glib
-CFLAGS   += -std=c99 -Wall
+CFLAGS   += -std=c99 -Wall -D_GNU_SOURCE
 CFLAGS   += $(shell pkg-config --cflags $(PACKAGES))
 LDLIBS   += $(shell pkg-config --libs $(PACKAGES))
 

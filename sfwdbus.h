@@ -1,5 +1,6 @@
 /******************************************************************************
  * Copyright (c) 2024 Jollyboys Ltd.
+ * Copyright (c) 2026 Jolla Mobile Ltd
  *
  * All rights reserved.
  *
@@ -90,6 +91,7 @@
 # define SFWDBUS_SENSOR_NAME_STEPCOUNTER         "stepcountersensor"
 # define SFWDBUS_SENSOR_NAME_TAP                 "tapsensor"
 # define SFWDBUS_SENSOR_NAME_TEMPERATURE         "temperaturesensor"
+# define SFWDBUS_SENSOR_NAME_WAKEUP              "wakeupsensor"
 
 /* Sensor D-Bus object paths used by sensorfwd
  *
@@ -115,6 +117,7 @@
 # define SFWDBUS_SENSOR_OBJECT_STEPCOUNTER       SFWDBUS_SENSOR_OBJECT(SFWDBUS_SENSOR_NAME_STEPCOUNTER)
 # define SFWDBUS_SENSOR_OBJECT_TAP               SFWDBUS_SENSOR_OBJECT(SFWDBUS_SENSOR_NAME_TAP)
 # define SFWDBUS_SENSOR_OBJECT_TEMPERATURE       SFWDBUS_SENSOR_OBJECT(SFWDBUS_SENSOR_NAME_TEMPERATURE)
+# define SFWDBUS_SENSOR_OBJECT_WAKEUP            SFWDBUS_SENSOR_OBJECT(SFWDBUS_SENSOR_NAME_WAKEUP)
 
 /* D-Bus interfaces for accessing sensor specific data
  *
@@ -136,6 +139,7 @@
 # define SFWDBUS_SENSOR_INTERFACE_STEPCOUNTER    "local.StepcounterSensor"
 # define SFWDBUS_SENSOR_INTERFACE_TAP            "local.TapSensor"
 # define SFWDBUS_SENSOR_INTERFACE_TEMPERATURE    "local.TemperatureSensor"
+# define SFWDBUS_SENSOR_INTERFACE_WAKEUP         "local.WakeupSensor"
 
 /** D-Bus method for enabling sensor
  *
@@ -184,5 +188,6 @@
 # define SFWDBUS_SENSOR_METHOD_GET_STEPCOUNTER   "steps"
 # define SFWDBUS_SENSOR_METHOD_GET_TAP           NULL /* has no state. just events */
 # define SFWDBUS_SENSOR_METHOD_GET_TEMPERATURE   "temperature"
+# define SFWDBUS_SENSOR_METHOD_GET_WAKEUP        NULL /* has no state. just events */
 
 #endif /* SFWDBUS_H_ */
