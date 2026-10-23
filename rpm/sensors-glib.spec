@@ -1,6 +1,6 @@
 Name:             sensors-glib
 Summary:          Sailfish sensors API for glib based C applications
-Version:          1.0.0
+Version:          1.1.0
 Release:          0
 License:          BSD
 URL:              https://github.com/sailfishos/sensors-glib/
