@@ -1,5 +1,6 @@
 /******************************************************************************
  * Copyright (c) 2024 Jollyboys Ltd.
+ * Copyright (c) 2026 Jolla Mobile Ltd
  *
  * All rights reserved.
  *
@@ -90,6 +91,7 @@ typedef struct SfwSampleProximity     SfwSampleProximity;
 typedef struct SfwSampleStepcounter   SfwSampleStepcounter;
 typedef struct SfwSampleTap           SfwSampleTap;
 typedef struct SfwSampleTemperature   SfwSampleTemperature;
+typedef struct SfwSampleWakeup        SfwSampleWakeup;
 
 /** Supported / known sensor types
  */
@@ -110,9 +112,10 @@ typedef enum SfwSensorId
     SFW_SENSOR_ID_STEPCOUNTER,
     SFW_SENSOR_ID_TAP,
     SFW_SENSOR_ID_TEMPERATURE,
+    SFW_SENSOR_ID_WAKEUP,
     SFW_SENSOR_ID_COUNT,
-    SFW_SENSOR_ID_FIRST = SFW_SENSOR_ID_PROXIMITY,
-    SFW_SENSOR_ID_LAST  = SFW_SENSOR_ID_TEMPERATURE,
+    SFW_SENSOR_ID_FIRST = SFW_SENSOR_ID_INVALID + 1,
+    SFW_SENSOR_ID_LAST  = SFW_SENSOR_ID_COUNT - 1,
 } SfwSensorId;
 
 /** Orientation sensor states
@@ -353,6 +356,17 @@ struct SfwSampleTemperature
     uint32_t temperature_value;
 };
 
+/** Wakeup sensor data block as sensord sends them
+ */
+struct SfwSampleWakeup
+{
+    /** Microseconds, monotonic */
+    uint64_t wakeup_timestamp;
+
+    /** Event value: for wakeup == 1 */
+    uint32_t wakeup_value;
+};
+
 union SfwSample
 {
     /** Microseconds, monotonic */
@@ -373,6 +387,7 @@ union SfwSample
     SfwSampleStepcounter   stepcounter;
     SfwSampleTap           tap;
     SfwSampleTemperature   temperature;
+    SfwSampleWakeup        wakeup;
 };
 
 struct SfwReading
@@ -420,6 +435,7 @@ const SfwSampleRotation      *sfwreading_rotation     (const SfwReading *self);
 const SfwSampleStepcounter   *sfwreading_stepcounter  (const SfwReading *self);
 const SfwSampleTap           *sfwreading_tap          (const SfwReading *self);
 const SfwSampleTemperature   *sfwreading_temperature  (const SfwReading *self);
+const SfwSampleWakeup        *sfwreading_wakeup       (const SfwReading *self);
 
 /* ------------------------------------------------------------------------- *
  * SFWSAMPLE
@@ -439,6 +455,7 @@ const char *sfwsamplerotation_repr     (const SfwSampleRotation *self);
 const char *sfwsamplestepcounter_repr  (const SfwSampleStepcounter *self);
 const char *sfwsampletap_repr          (const SfwSampleTap *self);
 const char *sfwsampletemperature_repr  (const SfwSampleTemperature *self);
+const char *sfwsamplewakeup_repr       (const SfwSampleWakeup *self);
 
 /* ------------------------------------------------------------------------- *
  * SFWORIENTATIONSTATE
