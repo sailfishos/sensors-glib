@@ -3,7 +3,7 @@
 # ----------------------------------------------------------------------------
 
 NAME    ?= sensors-glib
-VERSION ?= 1.0.0
+VERSION ?= 1.1.0
 DESTDIR ?= test-install-$(NAME)
 
 # Library SONAME
